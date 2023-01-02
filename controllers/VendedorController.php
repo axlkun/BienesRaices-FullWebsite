@@ -10,7 +10,6 @@ class VendedorController
 {
     public static function crear(Router $router)
     {
-
         $vendedor = new Vendedor();
         $errores = Vendedor::getErrores();
 
@@ -23,7 +22,9 @@ class VendedorController
             $errores = $vendedor->validar();
 
             if (empty($errores)) {
+
                 $vendedor->guardar();
+                $_SESSION['mensaje'] = 'El vendedor se ha creado correctamente';
             }
         }
 
@@ -54,6 +55,7 @@ class VendedorController
 
             if (empty($errores)) {
                 $vendedor->guardar();
+                $_SESSION['mensaje'] = 'El vendedor se ha actualizado correctamente';
             }
         }
 

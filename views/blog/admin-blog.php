@@ -59,3 +59,18 @@
         </tbody>
     </table>
 </main>
+
+<?php if (isset($_SESSION['mensaje'])) : ?>
+    <script>
+        swal({
+            title: "Éxito",
+            text: "<?php echo $_SESSION['mensaje']; ?>",
+            icon: "success"
+        });
+    //     .then(function() {
+    //     // Redirige al usuario a la página de administración
+    //     window.location = "/admin";
+    //   });
+    </script>
+    <?php unset($_SESSION['mensaje']); ?>
+<?php endif; ?>

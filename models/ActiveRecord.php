@@ -50,13 +50,14 @@ class ActiveRecord{
       $resultado = self::$db->query($query);
 
       if($resultado){
-               
-         header("Location: {$ruta}?resultado=1");
+         
+         //header("Location: {$ruta}?resultado=1");
+         header("Location: {$ruta}");
 
      }
    }
 
-   public function actualizar($ruta = '/admin'){
+   public function actualizar($ruta){
       $atributos = $this->santizarAtributos();
 
       $valores = [];
@@ -75,7 +76,7 @@ class ActiveRecord{
 
       if($resultado){
          
-         header("Location: {$ruta}?resultado=2"); 
+         header("Location: {$ruta}"); 
      }
 
    }
