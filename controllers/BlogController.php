@@ -49,6 +49,7 @@ class BlogController{
                 $image->save($carpetaImagenes . $nombreImagen);
 
                 $blog->guardar('/admin-blog');
+                $_SESSION['mensaje'] = 'El articulo se ha creado correctamente';
             }
         }
 
@@ -86,6 +87,7 @@ class BlogController{
                 }
 
                 $blog->guardar('/admin-blog');
+                $_SESSION['mensaje'] = 'El artículo se ha actualizado correctamente';
             }
         }
 

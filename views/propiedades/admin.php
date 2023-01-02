@@ -51,7 +51,7 @@
                             <form method="POST" action="/propiedades/eliminar">
                                 <input type="hidden" name="id" value="<?php echo $propiedad->id; ?>">
                                 <input type="hidden" name="tipo" value="propiedad">
-                                <input type="submit" class="boton-rojo-block w-100" value="Eliminar" onclick="return ventanaEmergente()">
+                                <input type="submit" class="boton-rojo-block w-100" value="Eliminar">
                             </form>
 
                             <a href="/propiedades/actualizar?id=<?php echo $propiedad->id; ?>" class="boton-amarillo-block">Actualizar</a>
@@ -86,9 +86,9 @@
                     <td>
                         <div class="tabla-botones">
                             <form method="POST" action="/vendedores/eliminar">
-                                <input type="hidden" name="id" value="<?php echo $vendedor->id; ?>">
+                                <input type="hidden" name="id" value="<?php echo $vendedor->id;?>">
                                 <input type="hidden" name="tipo" value="vendedor">
-                                <input type="submit" class="boton-rojo-block w-100" value="Eliminar" onclick="return ventanaEmergente()">
+                                <input type="submit" class="boton-rojo-block w-100" value="Eliminar">
                             </form>
 
                             <a href="vendedores/actualizar?id=<?php echo $vendedor->id; ?>" class="boton-amarillo-block">Actualizar</a>
@@ -101,3 +101,17 @@
     </table>
 
 </main>
+
+
+<?php if (isset($_SESSION['mensaje'])) : ?>
+    <script>
+        swal({
+            title: "Éxito",
+            text: "<?php echo $_SESSION['mensaje']; ?>",
+            icon: "success"
+        });
+    </script>
+    <?php unset($_SESSION['mensaje']); ?>
+<?php endif; ?>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

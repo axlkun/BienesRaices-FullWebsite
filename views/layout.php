@@ -7,6 +7,7 @@ $auth = $_SESSION['login'] ?? false;
 if (!isset($inicio)) {
     $inicio = false;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +20,8 @@ if (!isset($inicio)) {
     <title>Bienes Raices</title>
     <link rel="icon" href="../build/img/iconopestana.png">
     <link rel="stylesheet" href="../build/css/app.css">
-    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -38,7 +40,7 @@ if (!isset($inicio)) {
                 <div class="derecha">
 
                     <div class="dark-mode-boton">
-                        <img id="drkmode"  src="/build/img/dark-mode.svg" alt="boton dark mode">
+                        <img id="drkmode" src="/build/img/dark-mode.svg" alt="boton dark mode">
                         <img id="lightmode" src="/build/img/sun.svg" alt="boton dark mode">
                     </div>
 

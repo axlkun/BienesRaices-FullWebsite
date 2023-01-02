@@ -68,15 +68,13 @@ class PropiedadController
                 if (!is_dir(CARPETA_IMAGENES)) {
                     mkdir(CARPETA_IMAGENES);
                 }
-
-                
-
                 //Subida de archivos
                 //Guarda la imagen en el servidor
                 $image->save($carpetaImagenes . $nombreImagen);
 
                 //Guarda en la base de datos
                 $propiedad->guardar();
+                $_SESSION['mensaje'] = 'La propiedad se ha creado correctamente';
             }
         }
 
@@ -124,7 +122,7 @@ class PropiedadController
                 }
             }
             $propiedad->guardar();
-
+            $_SESSION['mensaje'] = 'La propiedad se ha actualizado correctamente';
         }
         
     }
