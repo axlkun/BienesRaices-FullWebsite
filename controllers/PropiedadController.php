@@ -148,6 +148,7 @@ class PropiedadController
                 if(validarTipoContenido($tipo)){
                     $propiedad = Propiedad::find($id);
                     $propiedad->eliminar();
+                    
                 } 
             
             }

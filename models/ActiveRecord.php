@@ -85,11 +85,15 @@ class ActiveRecord{
    public function eliminar($ruta = '/admin'){
       //Elimina el registro
       $query = "DELETE FROM " . static::$tabla . " WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1" ;
+      // echo $query;
+      // exit;
       $resultado = self::$db->query($query);
+
 
       if($resultado){
          $this->eliminarImagen();
-         header("Location: {$ruta}?resultado=3");
+         $_SESSION['mensaje'] = 'El registro se ha eliminado correctamente';
+         header("Location: {$ruta}");
      }
    }
 
