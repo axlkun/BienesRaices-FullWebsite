@@ -44,11 +44,11 @@
                     <td data-titulo="Autor"><?php echo $blog->autor; ?> </td>
                     <td>
                         <div class="tabla-botones">
-                            <form method="POST" action="/blog/eliminar">
+                            <form method="POST" action="/blog/eliminar" class="formEliminar">
                                 <input type="hidden" name="id" value="<?php echo $blog->id; ?>">
                                 <input type="hidden" name="tipo" value="blog">
-                                <input type="submit" class="boton-rojo-block w-100" value="Eliminar" onclick="return ventanaEmergente()">
                             </form>
+                            <a class="boton-rojo-block w-100 btnEliminar" data-id="<?php echo $blog->id; ?>">Eliminar</a>
 
                             <a href="/blog/actualizar?id=<?php echo $blog->id; ?>" class="boton-amarillo-block">Actualizar</a>
                         </div>
@@ -67,10 +67,35 @@
             text: "<?php echo $_SESSION['mensaje']; ?>",
             icon: "success"
         });
-    //     .then(function() {
-    //     // Redirige al usuario a la página de administración
-    //     window.location = "/admin";
-    //   });
+        //     .then(function() {
+        //     // Redirige al usuario a la página de administración
+        //     window.location = "/admin";
+        //   });
     </script>
     <?php unset($_SESSION['mensaje']); ?>
 <?php endif; ?>
+
+<script>
+    $(document).on('click', '.btnEliminar', function(e) {
+        e.preventDefault();
+        const idRegistro = this.getAttribute('data-id');
+
+        swal({
+                title: "¿Estás seguro?",
+                text: "El registro " + idRegistro + " se eliminará de la base de datos!",
+                icon: "warning",
+                buttons: {
+                    cancel: 'Cancelar', // Modificamos el texto del botón "Cancel" a "Cancelar"
+                    confirm: 'Eliminar'
+                },
+                dangerMode: true
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    // Enviar el formulario de eliminación
+                    const formEliminar = this.parentElement.querySelector('.formEliminar');
+                    formEliminar.submit();
+                }
+            });
+    });
+</script>

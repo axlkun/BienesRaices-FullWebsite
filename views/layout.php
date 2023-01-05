@@ -50,7 +50,7 @@ if (!isset($inicio)) {
                         <a href="/blog">Blog</a>
                         <a href="/contacto">Contacto</a>
                         <?php if ($auth) : ?>
-                            <a href="/logout">Cerrar sesión</a>
+                            <a href="/logout" class="logout">Cerrar sesión</a>
                         <?php endif ?>
                     </nav>
                 </div>
@@ -80,9 +80,36 @@ if (!isset($inicio)) {
 
         <p class="copyright">Todos los derechos reservados <?php echo date('Y'); ?> &copy;</p>
     </footer>
+    
 
     <!--modernizr sirve para saber si el navegador soporta webp-->
     <script src="../build/js/bundle.min.js"></script>
+
+    <script>
+    $(document).on('click', '.logout', function(e) {
+        const href = $(this).attr('href');
+        e.preventDefault();
+
+        swal({
+                title: "Aviso",
+                text: "¿Cerrar sesión?",
+                icon: "warning",
+                buttons: {
+                    cancel: 'Cancelar', // Modificamos el texto del botón "Cancel" a "Cancelar"
+                    confirm: 'Salir'
+                },
+                dangerMode: true
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    // Enviar el formulario de eliminación
+                    document.location.href = href;
+                }
+            });
+    });
+</script>
+
+    
 </body>
 
 </html>
