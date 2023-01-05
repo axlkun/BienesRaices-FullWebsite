@@ -48,11 +48,12 @@
                     <td data-titulo="Precio">$ <?php echo $propiedad->precio; ?> </td>
                     <td>
                         <div class="tabla-botones">
-                            <form method="POST" action="/propiedades/eliminar">
+                            <form method="POST" action="/propiedades/eliminar" class="formEliminar">
                                 <input type="hidden" name="id" value="<?php echo $propiedad->id; ?>">
                                 <input type="hidden" name="tipo" value="propiedad">
-                                <input type="submit" class="boton-rojo-block w-100" value="Eliminar">
+                                <!-- <input type="submit" class="boton-rojo-block w-100" value="Eliminar"> -->
                             </form>
+                            <a class="boton-rojo-block w-100 btnEliminar" data-id="<?php echo $propiedad->id; ?>">Eliminar</a>
 
                             <a href="/propiedades/actualizar?id=<?php echo $propiedad->id; ?>" class="boton-amarillo-block">Actualizar</a>
                         </div>
@@ -122,11 +123,11 @@
 
 $(document).on('click','.btnEliminar',function(e){
     e.preventDefault();
-    const idVendedor = this.getAttribute('data-id');
+    const idRegistro = this.getAttribute('data-id');
 
     swal({
         title: "¿Estás seguro?",
-        text: "El registro " + idVendedor + " se eliminará de la base de datos!",
+        text: "El registro " + idRegistro + " se eliminará de la base de datos!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
