@@ -85,11 +85,14 @@
                     <td data-titulo="Precio"><?php echo $vendedor->telefono; ?> </td>
                     <td>
                         <div class="tabla-botones">
-                            <form method="POST" action="/vendedores/eliminar">
+                            <form method="POST" action="/vendedores/eliminar" class="formEliminar">
                                 <input type="hidden" name="id" value="<?php echo $vendedor->id;?>">
                                 <input type="hidden" name="tipo" value="vendedor">
-                                <input type="submit" class="boton-rojo-block w-100" value="Eliminar">
+                                <!-- <input type="submit" class="boton-rojo-block w-100" value="Eliminar"> -->
                             </form>
+
+                            <!-- <a class="boton-rojo-block w-100" id="btnEliminar">Eliminar</a> -->
+                            <a class="boton-rojo-block w-100 btnEliminar" data-id="<?php echo $vendedor->id; ?>">Eliminar</a>
 
                             <a href="vendedores/actualizar?id=<?php echo $vendedor->id; ?>" class="boton-amarillo-block">Actualizar</a>
                         </div>
@@ -114,4 +117,27 @@
     <?php unset($_SESSION['mensaje']); ?>
 <?php endif; ?>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+
+
+$(document).on('click','.btnEliminar',function(e){
+    e.preventDefault();
+    const idVendedor = this.getAttribute('data-id');
+
+    swal({
+        title: "¿Estás seguro?",
+        text: "El registro " + idVendedor + " se eliminará de la base de datos!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+            // Enviar el formulario de eliminación
+            const formEliminar = this.parentElement.querySelector('.formEliminar');
+            formEliminar.submit();
+        } 
+        });
+});
+
+</script>
