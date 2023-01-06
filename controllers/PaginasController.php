@@ -4,6 +4,8 @@ use MVC\Router;
 use Model\Propiedad;
 use Model\Blog;
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 
 class PaginasController{
@@ -60,7 +62,6 @@ class PaginasController{
     }
     public static function contacto(Router $router){
 
-        $mensaje = null;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             
@@ -68,24 +69,26 @@ class PaginasController{
             $respuestas = $_POST['contacto'];
 
             $mail = new PHPMailer(); //Crear una instancia de PHPMailer
-
+            $mail->SMTPDebug = 2;
             //Configurar SMTP
             $mail->isSMTP();
             $mail->Host = 'smtp.mailtrap.io';
             $mail->SMTPAuth = true;
-            $mail->Username = '72d3c6f056c31c';
-            $mail->Password = '25cb748f87b398';
-            $mail->SMTPSecure = 'tls';
+            $mail->Username = '2860ae3d72a655';
+            $mail->Password = '279a21fb39131b';
+            // $mail->SMTPSecure = 'tls';
+            $mail->MAIL_ENCRYPTION= 'tls';
             $mail->Port = 2525;
 
             //Configurar el contenido del mail
-            $mail->setFrom('admin@bienesraices.com'); //quien lo envia
-            $mail->addAddress('admin@bienesraices.com', 'BienesRaices.com'); //quien lo recibe
+            $mail->setFrom('bienesraices@correo.com'); //quien lo envia
+            $mail->addAddress('bienesraices@correo.com', 'BienesRaices.com'); //quien lo recibe
             $mail->Subject = 'Tienes un nuevo mensaje';
 
             //Habilitar HTML
             $mail->isHTML(true);
             $mail->CharSet = 'UTF-8';
+
 
             //Definir el contenido
             $contenido = '<html>';
@@ -114,14 +117,17 @@ class PaginasController{
             $mail->AltBody = 'Esto es texto alternativo sin html';
             //Enviar el mail
             if($mail->send()){
-                $mensaje = "Mensaje enviado correctamente";
+                // $mensaje = "Mensaje enviado correctamente";
+                $_SESSION['mensajeExito'] = 'El mensaje se ha enviado correctamente';
             }else{
-                $mensaje = "El mensaje no se pudo enviar...";
+                // $mensaje = "El mensaje no se pudo enviar...";
+                $_SESSION['mensajeError'] = 'No se ha podido enviar el mensaje';
             }
+            
         }
 
         $router->render('/paginas/contacto',[
-            'mensaje' => $mensaje
+            
         ]);
     }
 
@@ -129,3 +135,4 @@ class PaginasController{
 
 
 ?>
+

@@ -6,14 +6,6 @@
         <a class="enlace" href="/admin">Propiedades/Vendedores</a>
     </div>
 
-    <?php
-    if ($resultado) {
-        $mensaje = mostrarNotificacion(intval($resultado));
-        if ($mensaje) { ?>
-            <p class="alerta exito"> <?php echo s($mensaje) ?> </p>
-    <?php }
-    } ?>
-
     <div class="contenedor-padre">
         <div class="contenedor-btn">
             <a href="/blog/crear" class="boton boton-amarillo">Nuevo post</a>
