@@ -69,7 +69,7 @@ class PaginasController{
             $respuestas = $_POST['contacto'];
 
             $mail = new PHPMailer(); //Crear una instancia de PHPMailer
-            $mail->SMTPDebug = 2;
+            //$mail->SMTPDebug = 2;
             //Configurar SMTP
             $mail->isSMTP();
             $mail->Host = 'smtp.mailtrap.io';
