@@ -1,12 +1,6 @@
 <main class="contenedor seccion contenido-centrado">
         <h1>Contacto</h1>
 
-    <?php if($mensaje){
-        echo "<p class='alerta exito'>" . $mensaje . "</p>";
-    } 
-    
-    ?>
-
         <picture>
             <source srcset="build/img/destacada3.webp" type="
             image/webp">
@@ -69,3 +63,33 @@
         </form>
 
     </main>
+
+    <!-- <?//php if (isset($_SESSION['mensajeExito'])) : ?>
+    <?//php unset($_SESSION['mensajeExito']); ?>
+    <script>
+        swal({
+            title: "Éxito",
+            text: "<?//php echo $_SESSION['mensajeExito']; ?>",
+            icon: "success",
+            button: "Aceptar",
+        }).then((value) => {
+            window.location.replace("/");
+        });
+    </script>
+    
+<?//php endif; ?>
+
+<?//php if (isset($_SESSION['mensajeError'])) : ?>
+    <?//php unset($_SESSION['mensajeError']); ?>
+    <script>
+        swal({
+            title: "Error",
+            text: "El mensaje no se ha podido enviar",
+            icon: "warning",
+            button: "Aceptar",
+        }).then((value) => {
+            window.location.replace("/contacto");
+        });
+    </script>
+    
+<?//php endif; ?> -->
