@@ -64,12 +64,12 @@
 
     </main>
 
-    <!-- <?//php if (isset($_SESSION['mensajeExito'])) : ?>
-    <?//php unset($_SESSION['mensajeExito']); ?>
+    <?php if (isset($_SESSION['mensajeExito'])) : ?>
+    <?php unset($_SESSION['mensajeExito']); ?>
     <script>
         swal({
             title: "Éxito",
-            text: "<?//php echo $_SESSION['mensajeExito']; ?>",
+            text: "Mensaje enviado!",
             icon: "success",
             button: "Aceptar",
         }).then((value) => {
@@ -77,10 +77,10 @@
         });
     </script>
     
-<?//php endif; ?>
+<?php endif; ?>
 
-<?//php if (isset($_SESSION['mensajeError'])) : ?>
-    <?//php unset($_SESSION['mensajeError']); ?>
+<?php if (isset($_SESSION['mensajeError'])) : ?>
+    <?php unset($_SESSION['mensajeError']); ?>
     <script>
         swal({
             title: "Error",
@@ -92,4 +92,4 @@
         });
     </script>
     
-<?//php endif; ?> -->
+<?php endif; ?>
